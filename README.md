@@ -1,21 +1,30 @@
-# Project Name
+# My First Project
 
 **Description**: ეს პროექტი არის პატარა აპლიკაცია, რომელიც შექმნილია HTML და CSS-ის გამოყენებით. მასში განთავსებულია სხვადასხვა ელემენტები, როგორიცაა გვერდი, სექციები და სტილები, რათა გამოიყენოთ როგორც მარტივი ვებ-გვერდის დიზაინი.
 
-## შინაარსი
+## Overview
+This is a basic HTML/CSS project that I created as part of my journey in frontend development.
 
-- **index.html** - მთავარი HTML ფაილი.
-- **style.css** - CSS სტილები, რომლებიც განსაზღვრავენ გვერდის გარეგნულ იერს.
+## Features
+- Simple layout with HTML and CSS.
+- Static website structure.
 
-## ინსტალაცია
+## Technologies Used
+- HTML
+- CSS
 
-1. დააკლოპეთ რეპოზიტორიიდან ფაილები.
-2. გახსენით `index.html` ფაილი ბრაუზერში.
+## Getting Started
+1. Clone the repository.
+2. Open `index.html` in a browser to view the project.
 
-## გამოყენება
+## Installation
+1. Clone the repository to your local machine.
+2. Open the `index.html` file in a browser.
 
-1. შეცვალეთ HTML და CSS კოდები თქვენი საჭიროების მიხედვით.
-2. გამოიყენეთ ფაილების სტრუქტურა როგორც საფუძველი სხვა პროექტებისთვის.
+## Usage
+1. Modify the HTML and CSS code according to your needs.
+2. Use the file structure as a base for other projects.
 
-
-
+## Future Improvements
+- Adding JavaScript for interactivity.
+- Enhancing design with CSS frameworks like Bootstrap.
