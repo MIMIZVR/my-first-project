@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-
     <header>
         <nav>
             <div class="logo">
@@ -20,26 +20,30 @@
                     <img src="images/logo.jpg" alt="Logo">
                 </a>
             </div>
-            
             <ul class="nav-links">
-                <li><a href="#about">about</a></li>
-                <li><a href="#resume">resume</a></li>
-                <li><a href="#contact">contact</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact" id="contact-link-header" class="contact-link">Contact</a></li>
             </ul>
             <div class="social-icons">
-                <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Visit my Instagram profile"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/yourusername" target="_blank" aria-label="Visit my LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/yourusername" target="_blank"aria-label="Visit my GitHub profile" ><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/mimizavra/" target="_blank" aria-label="Visit my Instagram profile" class="social-link" data-name="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/maia-zavrashvili/" target="_blank" aria-label="Visit my LinkedIn profile" class="social-link" data-name="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/MIMIZVR" target="_blank" aria-label="Visit my GitHub profile" class="social-link" data-name="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
             </div>
         </nav>
     </header>
-
-    <div class="container">
-        
-        <div class="left-side">
+  <!-- შემდეგი გვერდი  -->
+   <main>
+    <div  class="container">
+        <div id="home" class="left-side">
             <h1>about.</h1>
-            <p>I'm a frontend developer based in sunny Tbilisi, Georgia.</p>
-            
+            <p id="about-text">I'm a frontend developer based in sunny Tbilisi, Georgia.</p>
             <p>
                 "Since 2022, I’ve been passionate about turning complex problems into simple,
                 beautiful, and intuitive code. When I'm not writing code, you can find me reading, knitting,
@@ -47,20 +51,24 @@
             </p>
         </div>
         <div class="right-side">
-            <img src="images/profile-pict.jpg.JPG" alt="Maia Zavrashvili's profile picture" class="main-image">
+            <img src="images/profile-pict.jpg" alt="Maia Zavrashvili's profile picture" class="main-image">
         </div>
     </div>
+    <!-- შემდეგი გვერდი  -->
     <div class="image-gallery">
-        <img src="images/pic1.jfif" alt="Gallery Image 1">
-        <img src="images/pic2.jfif" alt="Gallery Image 2">
-        <img src="images/pic3.jfif" alt="Gallery Image 3">
-        <img src="images/pic4.jfif" alt="Gallery Image 4">
-        <img src="images/pic5.jfif" alt="Gallery Image 5">
+        <img src="images/pic1.jfif" alt="Gallery Image 1" class="Screenshot of my landing page design project">
+        <img src="images/pic2.jfif" alt="Gallery Image 2" class="Screenshot of my landing page design project">
+        <img src="images/pic3.jfif" alt="Gallery Image 3" class="Screenshot of my landing page design project">
+        <img src="images/pic4.jfif" alt="Gallery Image 4" class="Screenshot of my landing page design project">
+        <img src="images/pic5.jfif" alt="Gallery Image 5" class="Screenshot of my landing page design project">
     </div>
-
-    <!-- დიაგრამის გვერდი  -->
-
-    <div class="container-wrapper">
+    <!-- Lightbox Modal -->
+    <div id="lightbox" style="display: none;">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="placeholder.jpg" alt="Full-size image">
+    </div>
+    <!-- შემდეგი  დიაგრამის გვერდი  -->
+    <div id="resume" class="container-wrapper">
         <div class="part-coder">
             <h3>Part Coder</h3>
             <ul>
@@ -72,14 +80,12 @@
                 <li>Version Control (Git/GitHub)</li>
             </ul>
         </div>
-    
         <div class="pie-chart-wrapper">
             <div class="pie-chart">
                 <span class="text left">CODING</span>
                 <span class="text right">DESIGN</span>
             </div>
         </div>
-    
         <div class="part-designer">
             <h3>Part Designer</h3>
             <ul>
@@ -91,12 +97,14 @@
             </ul>
         </div>
     </div>
+     <!-- შემდეგი გვერდი  -->
     <div class="split-screen">
         <div class="image-section">
-            <img src="images/random pic.jfif" alt="A random aesthetic image representing my interests" />
+            <img src="images/randompic.jfif" alt="A random aesthetic image representing my interests">
         </div>
         <div class="text-section">
-            <h4>Random facts</h4>
+            <section id="project">
+            <h4 >Random facts</h4>
             <ul>
                 <li>I’m an optimist</li>
                 <li>Knitting is my therapy</li>
@@ -108,15 +116,17 @@
                 <li>I am a mother of a teenager</li>
                 <li>I LOVE LUCA AND OUR CATS</li>
             </ul>
+            </section>
         </div>
     </div>
+    <!-- შემდეგი გვერდი  -->
     <div class="morestory">
         <div class="storeimg">
             <div class="storeimg-container">
-                <img src="images/store pic.jfif" alt="store-pic" />       
+                <img src="images/storepic.jfif" alt="store-pic">       
             </div>
-            <img src="images/smalloverley.jfif" alt="Profile Image" class="small-overlay-img">
         </div>
+
         <div class="story-section">
             <h4>My Story</h4>
             <p class="story">
@@ -124,22 +134,10 @@
                 functional websites. 
                 Over time, I refined my skills and explored new technologies to bring ideas to life.
             </p>
-            <div class="button morestory">Read my story</div>
+            <button class="read-more-btn">Read My Story</button>
         </div>
-        <footer>
-            <div class="footernav">
-                <nav>
-                    <a href="#">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Projects</a>
-                    <a href="#">Contact</a>
-                </nav>
-            </div>
-            <p class="footer-text">© 2025 Maia Zavrashvili.</p>
-        </footer>
-        
     </div>
-    <div class="moreaboutme">
+    <div id="about" class="moreaboutme">
         <h5>From Surgery to Code – An Unusual Career Pivot</h5>
         <p>If someone had told me a few years ago that I’d swap surgical tools for a laptop and spend my days debugging code instead of assisting in surgeries, I probably wouldn’t have believed them. 
             But here we are.</p>
@@ -168,5 +166,38 @@
                 🚀 Let’s create something amazing together—preferably with fewer bugs and more creativity!
             </p>
     </div>
+    </main>
+     <!-- შემდეგი გვერდი  -->
+    <footer>
+        <div id="contact" class="footernav">
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#resume">Resume</a>
+                <a href="#contact" id="contact-link-footer" class="contact-link">Contact</a>
+            </nav>
+        </div>
+         <!-- contact-form  -->
+         <div id="contact-form" class="contact-form">
+            <h2>Contact</h2>
+            <p>If you would like to get in touch, feel free to reach out via the contact form below:</p>
+            <form action="#" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+        
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+        
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+        
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        
+        <p class="footer-text">© 2025 Maia Zavrashvili.</p>
+    </footer>
 </body>
 </html>
+
+

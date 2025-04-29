@@ -5,18 +5,27 @@
     text-decoration: none;
     list-style: none; /* სიების სტილის გაქრობა */
 }
-
+html {
+    scroll-behavior: smooth;
+}
+:root {
+    --primary-color: #333;      /* მუქი ფერი */
+    --secondary-color: #555;    /* ღია მუქი ფერი */
+    --accent-color: #007bff;    /* კავშირის ფერი */
+    --background-color: #dadada; /* ფონდის ფერი */
+    --hover-color: #a5a7a8;      /* ჰოვერის ეფექტი */
+}
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #dadada;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--primary-color);
     width: 100%; /* 1440px-ის მაგივრად, რომ responsive იყოს */
     max-width: 1440px; /* მაგრამ მაინც არ გასცდეს ამ ზომას */
 
 }
 
-
+/* header */
 header {
     background-color: #000000;
     width: 100%;
@@ -27,7 +36,29 @@ header {
     margin: 0 auto;
 }
 
+/* logo */
+.logo {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; /* მარცხნიდან სივრცის დამატება */
+}
+.logo img {
+    max-width: 100px;
+    height: auto;
+    max-height: 80px;
+    transition: transform 0.6s ease;
+    animation: spin 2s linear infinite paused;
+}
 
+/* ლოგოს გაზრდა მაუსის დაჭერისას */
+.logo-link:active img {
+    transform: rotate(360deg) scale(1.2);
+}
+.logo-link {
+    display: inline-block; 
+}
+
+/* Navigation*/
 nav {
     display: flex;
     justify-content: space-between;
@@ -36,51 +67,30 @@ nav {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    gap: 20px; /* სივრცის დამატება */
+    gap: 20px; 
 }
-
-
-.logo {
-    display: flex;
-    align-items: center;
-    margin-left: 20px; /* მარცხნიდან სივრცის დამატება */
-}
-
-
-.logo img {
-    max-width: 100px;
-    height: auto;
-    max-height: 80px;
-}
-
-
-.logo-link {
-    display: inline-block; /* ლინკის ზედაპირული კონტეინერი */
-}
-
-
 .nav-links {
     list-style: none;
     display: flex;
     gap: 50px;
 }
-
 .nav-links li {
     text-transform: uppercase;
 }
-
 .nav-links a {
     text-decoration: none;
     color: #fff;
     font-weight:300;
     transition: color 0.3s;
 }
-
+.nav-links a.active {
+    color: #ffda0b;
+}
 .nav-links a:hover {
     color: #787a7c;
 }
 
-
+/* სოციალური მედია  */
 .social-icons {
     display: flex;
     gap: 40px;
@@ -95,6 +105,8 @@ nav {
 .social-icons a:hover {
     color: #787a7c; 
 }
+
+/* მეორე გვერდი  */
 .container {
     display: flex;
     justify-content: space-between;
@@ -102,6 +114,7 @@ nav {
     width: 80%;
     max-width: 1200px;
     gap: 40px;
+    padding: 20px;
     height: 100vh; /* მთლიანი ფანჯრის სიმაღლე */
 }
 
@@ -113,6 +126,7 @@ nav {
     padding: 20px;
     margin:100px;
     height: 100%; /* რომ ცენტრში სწორად მოთავსდეს */
+    opacity: 0;
 }
 
 .left-side h1 {
@@ -129,14 +143,19 @@ nav {
 .left-side p:nth-of-type(2) {
     margin-top: 20px; /* ან მეტიც, როგორც გინდა */
 }
+
 .right-side {
     flex: 1;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: 0;
 }
-
+.visible {
+    opacity: 1;
+    transition: opacity 0.5s ease; /* რბილი გადადება */
+}
 .main-image {
     width: 100%;
     max-width: 600px;
@@ -147,6 +166,8 @@ nav {
 .main-image:hover {
     transform: scale(1.1); /* სურათის ზომის გაზრდა 10%-ით */
 }
+
+/*Gallery */
 .image-gallery {
     display: flex;
     justify-content: center; /* ფოტოები განლაგდება ცენტრში */
@@ -156,8 +177,6 @@ nav {
     padding: 0 20px; /* Padding გვერდებიდან */
     outline: 5px solid #cfcbc9; /* ნარინჯისფერი ჩარჩო */
     outline-offset: 10px; /* ჩარჩოს დაშორება სურათიდან */
-    
-
 }
 
 .image-gallery img {
@@ -173,10 +192,34 @@ nav {
     transform: scale(1.05);  /* სურათის გაბევეტება, რათა უკეთ გამოჩნდეს */
 }
 
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
 
+#lightbox-img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
 
  /* დიაგრამის გვერდი  */
-
 .container-wrapper {
     width: 100%;
     max-width: 1200px;
@@ -268,8 +311,8 @@ ul li::before {
     color: #393131;
     margin-right: 10px;
 }
-/* რენდომ ფაქტები */
 
+/* რენდომ ფაქტები */
 .split-screen {
     display: flex;
     height: 100vh; /* ეკრანის სრული სიმაღლე */
@@ -329,23 +372,26 @@ ul li::before {
     text-decoration: none;
     margin-bottom: 20px; /* ერთი პუნქტის ქვემოთ მცირე სივრცე (მანძილი გაიზარდა) */
 }
+
+/* ბოლო გვერდი */
+
 /* store page */
 .morestory {
-    display: flex; /* ელემენტების განლაგება გვერდზე */
-    justify-content: space-between; /* სივრცე ფოტო და ტექსტს შორის */
-    align-items: center; /* ვერტიკალური ცენტრირება */
-    gap: 20px; /* ფოტო და ტექსტს შორის სივრცე */
-    margin: 20px; /* სივრცე ექრანის გვერდებზე */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin: 20px;
 }
 
 .storeimg {
-    width: 550px; /* მთავარი სურათის ზომა */
+    width: 550px;
     height: 350px;
-    position: relative; /* აუცილებელია ზედა სურათის მოსათავსებლად */
-    outline: 5px solid #dad5d3; /* ჩარჩო */
-    outline-offset: 10px; /* ჩარჩოს დაშორება */
-    border-radius: 10px; /* რბილი კუთხეები */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* ჩრდილი */
+    position: relative;
+    outline: 5px solid #dad5d3;
+    outline-offset: 10px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .storeimg-container {
@@ -356,89 +402,81 @@ ul li::before {
 .storeimg-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* სურათს ჩარჩოში მოაქცევს */
-    object-position: center center; /* ცენტრალიზაცია */
+    object-fit: cover;
     border-radius: 10px;
 }
 
-/* პატარა სურათის განთავსება მარჯვენა ზედა კუთხეში */
-.small-overlay-img {
-    width: 150px;
-    height: 150px;
-    position: absolute;
-    top: 2px;
-    right: 5px;
-    border-radius: 50%; /* მრგვალი ფორმისთვის */
-    border: 2px solid white; /* პატარა ჩარჩო */
-}
-footer {
-    width: 100%;
-    background: #333;
-    padding: 15px 0;
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    left: 0;
+.story-section {
+    max-width: 500px;
 }
 
-footer nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-footer nav a {
+.read-more-btn {
+    background-color: #75b2e4;
     color: white;
-    text-decoration: none;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 16px;
-    transition: color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
-footer nav a:hover {
-    color: #007bff;
-    text-decoration: underline;
+.read-more-btn:hover {
+    background-color: #2590a3;
 }
 
-.footer-text {
-    color: #aaa;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    footer nav {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-/* ბოლო გვერდი */
+/* დამალული ბლოკისთვის */
 .moreaboutme {
-    max-width: 800px;
-    background:#dadada;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.8s ease;
+    background: linear-gradient(145deg, #e8e8e8, #ffffff);
+    margin: 30px auto;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 250px;
-    line-height: 1.6;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    line-height: 1.7;
+    font-family: 'Segoe UI', sans-serif;
 }
+
+/* აქტიური მდგომარეობა — გამოჩენილი ბლოკი */
+.moreaboutme.active {
+    opacity: 1;
+    max-height: 2000px;
+}
+
+/* სათაური */
 .moreaboutme h5 {
-    font-size: 22px;
-    color: #333;
-    margin-bottom: 15px;
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
+/* ტექსტი */
 .moreaboutme p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 15px;
+    font-size: 17px;
+    color: #444;
+    margin-bottom: 18px;
+    line-height: 1.8;
 }
 
+/* ბოლო პარაგრაფი — ბრწყინვალე სტილი */
 .moreaboutme p:last-child {
     font-weight: bold;
     color: #007bff;
     text-align: center;
+    font-size: 18px;
+    background-color: rgba(0, 123, 255, 0.05);
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.moreaboutme p:last-child:hover {
+    transform: scale(1.03);
+    background-color: rgba(0, 123, 255, 0.1);
 }
 
 .moreaboutme p:last-child::before {
@@ -449,20 +487,8 @@ footer nav a:hover {
     content: " ✨";
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-    .moreaboutme {
-        padding: 20px;
-    }
 
-    .moreaboutme h5 {
-        font-size: 20px;
-    }
-
-    .moreaboutme p {
-        font-size: 14px;
-    }
-}
+/* footer */
 footer {
     width: 100vw; /* სრულად გაიშლება ეკრანის სიგანეზე */
     background: #dadada;
@@ -498,25 +524,88 @@ footer nav a:hover {
     margin-top: 10px;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-    footer nav {
-        flex-direction: column;
-        gap: 10px;
-    }
+.contact-form {
+    display: none;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
 }
+
+
+/* Responsive Design */
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
         text-align: center;
+        gap: 20px;
+    }
+
+    .left-side, .right-side {
+        width: 100%;
     }
     .nav-links {
-        flex-direction: column;
+        flex-direction: column; /* ნავიგაციის ელემენტები ვერტიკალურად */
         gap: 10px;
+        text-align: center; /* ცენტრში განათავსებს ტექსტებს */
     }
     .social-icons {
-        gap: 20px;
+        gap: 20px; /* ნორმალური gap */
+        justify-content: center; /* ცენტრში განლაგება */
+    }
+    .image-gallery {
+        flex-direction: column; /* სურათები განლაგდება ვერტიკალურად */
+        gap: 20px; /* უფრო მცირე დაშორება */
+    }
+    .moreaboutme {
+        padding: 20px; /* პატარა padding */
+    }
+    .split-screen {
+        flex-direction: column; /* ტექსტი და სურათები განლაგდება ვერტიკალურად */
+        justify-content: flex-start; /* ვერტიკალური ცენტრი */
+    }
+
+    .image-section, .text-section {
+        width: 100%; /* ორივე იქნება სიგანეზე მთლიანი */
     }
 }
 
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container-wrapper {
+        padding: 20px; /* პატარა Padding */
+        flex-direction: column; /* ვერტიკალური განლაგება */
+        align-items: center; 
+        gap: 20px; /* უფრო მცირე დაშორება */
+    }
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    .moreaboutme {
+        padding: 20px;
+    }
+
+    .moreaboutme h5 {
+        font-size: 20px;
+    }
+
+    .moreaboutme p {
+        font-size: 14px;
+    }
+    footer nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .footer-text {
+        margin-top: 20px;
+    }
+}
